@@ -1672,11 +1672,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\calin\\OneDrive\\1\\Desktop\\FACULTATE\\SGBD\\laburi\\LABORATOR1\\LABORATOR1\\LABORATOR1.csproj",
+      "projectUniqueName": "C:\\Users\\calin\\Sisteme-de-Gestiune-a-Bazelor-de-Date\\LABORATOR1\\LABORATOR1\\LABORATOR1.csproj",
       "projectName": "LABORATOR1",
-      "projectPath": "C:\\Users\\calin\\OneDrive\\1\\Desktop\\FACULTATE\\SGBD\\laburi\\LABORATOR1\\LABORATOR1\\LABORATOR1.csproj",
+      "projectPath": "C:\\Users\\calin\\Sisteme-de-Gestiune-a-Bazelor-de-Date\\LABORATOR1\\LABORATOR1\\LABORATOR1.csproj",
       "packagesPath": "C:\\Users\\calin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\calin\\OneDrive\\1\\Desktop\\FACULTATE\\SGBD\\laburi\\LABORATOR1\\LABORATOR1\\obj\\",
+      "outputPath": "C:\\Users\\calin\\Sisteme-de-Gestiune-a-Bazelor-de-Date\\LABORATOR1\\LABORATOR1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
