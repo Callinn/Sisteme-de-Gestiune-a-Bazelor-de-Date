@@ -205,15 +205,7 @@ namespace LABORATOR1.ui
             achievementsLabel.Font = new Font("Comic Sans MS", 18, FontStyle.Regular);
             this.Controls.Add(achievementsLabel);
 
-            Label dataLansareLabel = new Label();
-            dataLansareLabel.Location = new System.Drawing.Point(242, 120);
-            dataLansareLabel.Width = 200;
-            dataLansareLabel.Height = 30;
-            dataLansareLabel.Name = "Release Date";
-            dataLansareLabel.TabIndex = 15;
-            dataLansareLabel.Text = "Release Date             ↓";
-            dataLansareLabel.Font = new Font("Comic Sans MS", 12, FontStyle.Regular);
-            this.Controls.Add(dataLansareLabel);
+           
 
             Label functionalitatiLabel = new Label();
             functionalitatiLabel.Location = new System.Drawing.Point(950, 250);

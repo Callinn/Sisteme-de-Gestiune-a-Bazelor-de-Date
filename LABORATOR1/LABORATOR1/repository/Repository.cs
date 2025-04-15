@@ -32,7 +32,7 @@ namespace LABORATOR1.repository
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT achievement_name, description FROM Achievement WHERE game_id = @parentId";
+                string query = "SELECT achievement_name, description FROM ACHIEVEMENTS WHERE game_id = @parentId";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 adapter.SelectCommand.Parameters.AddWithValue("@parentId", parentId);
                 DataTable table = new DataTable();
@@ -43,15 +43,31 @@ namespace LABORATOR1.repository
 
         public void AddAchievement(String achievement_name, String description, int game_id)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+      using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "INSERT INTO Achievements (achievement_name,description,game_id) VALUES (@achievement_name,@description,@game_id)";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@achievement_name", achievement_name);
-                command.Parameters.AddWithValue("@description", description);
-                command.Parameters.AddWithValue("@game_id", game_id);
+                // Check for existing achievement with the same name and game_id
+                string checkQuery = "SELECT COUNT(*) FROM Achievements WHERE achievement_name = @achievement_name AND game_id = @game_id";
+                SqlCommand checkCommand = new SqlCommand(checkQuery, connection);
+                checkCommand.Parameters.AddWithValue("@achievement_name", achievement_name);
+                checkCommand.Parameters.AddWithValue("@game_id", game_id);
                 connection.Open();
-                command.ExecuteNonQuery();
+                int count = (int)checkCommand.ExecuteScalar();
+                connection.Close();
+
+                if (count > 0)
+                {
+                    throw new Exception("An achievement with the same name already exists for this game.");
+                }
+
+                // Insert new achievement
+                string insertQuery = "INSERT INTO Achievements (achievement_name,description,game_id) VALUES (@achievement_name,@description,@game_id)";
+                SqlCommand insertCommand = new SqlCommand(insertQuery, connection);
+                insertCommand.Parameters.AddWithValue("@achievement_name", achievement_name);
+                insertCommand.Parameters.AddWithValue("@description", description);
+                insertCommand.Parameters.AddWithValue("@game_id", game_id);
+                connection.Open();
+                insertCommand.ExecuteNonQuery();
+                connection.Close();
             }
         }
 
@@ -59,7 +75,7 @@ namespace LABORATOR1.repository
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "UPDATE Achievements SET achievement_name = @achievement_name, description=@description, game_id = @game_id";
+                string query = "UPDATE ACHIEVEMENTS SET achievement_name = @achievement_name, description=@description, game_id = @game_id";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@achievement_name", achievement_name);
                 command.Parameters.AddWithValue("@description", description);
@@ -73,7 +89,7 @@ namespace LABORATOR1.repository
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "DELETE FROM Achievements WHERE achievement_name = @achievement_name";
+                string query = "DELETE FROM ACHIEVEMENTS WHERE achievement_name = @achievement_name";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@achievement_name", achievement_name);
                 connection.Open();
